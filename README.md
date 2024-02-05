@@ -27,7 +27,7 @@ docker run -d --name mycontainer -p 80:80 kb_warehouse_database
 ```
 4. [Explore Endpoints](#explore-endpoints)
 
-If there are troubles with connecting to the database, then: &#21B4;
+If there are troubles with connecting to the database, then: &#x21B4;
 ## Deploy locally
 
 1. [Install Mongodb](https://www.mongodb.com/docs/v7.0/administration/install-community/) if not installed

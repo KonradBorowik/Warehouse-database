@@ -61,18 +61,18 @@ This db comes with preloaded sample data. Two collections:
 http://localhost/docs#
 
 Endpoints for catategories:
-- GET http://localhost/ - returns all categories in database
-- POST http://localhost/ - uploads category (json format required)
-- PUT http://localhost/{id} - updates specified record (by _id)
-- DELETE http://localhost/{id} - deletes specified record (by _id)
+- GET http://localhost/categories/ - returns all categories in database
+- POST http://localhost/categories/ - uploads category (json format required)
+- PUT http://localhost/categories/{id} - updates specified record (by _id)
+- DELETE http://localhost/categories/{id} - deletes specified record (by _id)
 
 Endpoints for Parts:
-- GET http://localhost/ - returns all parts in database
-- GET http://localhost/search/{key: value} - returns all parts with matching key and value pair
-- GET http://localhost/search/value - returns all parts with matching value
-- POST http://localhost/ - uploads category (json format required)
-- PUT http://localhost/{id} - updates specified record (by _id)
-- DELETE http://localhost/{id} - deletes specified record (by _id)
+- GET http://localhost/parts/ - returns all parts in database
+- GET http://localhost/parts/search/{key: value} - returns all parts with matching key and value pair
+- GET http://localhost/parts/search/value - returns all parts with matching value
+- POST http://localhost/parts/ - uploads category (json format required)
+- PUT http://localhost/parts/{id} - updates specified record (by _id)
+- DELETE http://localhost/parts/{id} - deletes specified record (by _id)
 
 
 ### Why FastAPI?

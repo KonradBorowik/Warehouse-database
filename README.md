@@ -57,30 +57,31 @@ This db comes with preloaded sample data. Two collections:
 - Categories: 1 base category and 3 subcategories
     ```json
     {
-        "name": <str>,
-        "parent_name": <str>
+        "name": "str",
+        "parent_name": "str"
     }
     ```
 - Parts:
     ```json
     {
-        "serial_number": <str>,
-        "name": <str>,
-        "description": <str>,
-        "category": <str>,
-        "quantity": <int>,
-        "price": <float>,
+        "serial_number": "str",
+        "name": "str",
+        "description": "str",
+        "category": "str",
+        "quantity": "int",
+        "price": "float",
         "location": {
-            "warehouse": <str>,
-            "room": <int>,
-            "bookcase": <int>,
-            "shelf": <int>,
-            "cuvette": <int>,
-            "column": <int>,
-            "row": <int>,
+            "warehouse": "str",
+            "room": "int",
+            "bookcase": "int",
+            "shelf": "int",
+            "cuvette": "int",
+            "column": "int",
+            "row": "int",
         }
     }
     ```
+To see some examples use the GET method that returns all records from a collection OR explore .json files in app/config/data/.
 
 ## Explore endpoints 
 http://localhost/docs#

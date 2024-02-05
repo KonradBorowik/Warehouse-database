@@ -1,4 +1,5 @@
 import yaml
+from bson import ObjectId
 
 from app.config.setup import client
 from app.models.part import Part
@@ -27,3 +28,7 @@ def check_if_correct_category(part: Part):
         if part.category == bc['name']:
             raise Exception(f"Cannot assign part to base category '{part.category}'.")
         
+
+def check_if_correct_part_id(id: ObjectId):
+    if not client.konrad_borowik.parts.find_one_and_delete({"_id": ObjectId(id)}):
+        raise Exception(f"Part id not in database")

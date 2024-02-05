@@ -5,7 +5,8 @@ from app.models.part import Part
 from app.routes.utils.parts_utils import (
     parse_key,
     parse_value,
-    check_if_correct_category
+    check_if_correct_category,
+    check_if_correct_part_id
 )
 from app.config.setup import client
 from app.schemas.parts import partEntity, partEntities
@@ -67,6 +68,7 @@ async def create_part(part: Part):
 @router.put('/{id}')
 async def update_whole_part(id, part: Part):
     try:
+        check_if_correct_part_id(id)
         check_if_correct_category(part)
         client.konrad_borowik.parts.find_one_and_update(
             {
@@ -83,5 +85,8 @@ async def update_whole_part(id, part: Part):
 
 @router.delete('/{id}')
 async def delete_part(id):
-    client.konrad_borowik.parts.find_one_and_delete({"_id": ObjectId(id)})
-    return f'Part deleted.'
+    try:
+        client.konrad_borowik.parts.find_one_and_delete({"_id": ObjectId(id)})
+        return f'Part deleted.'
+    except Exception as e:
+        return f'Caught this error: {e}'

@@ -7,7 +7,8 @@ from app.schemas.category import categoryEntity, categoryEntities
 from app.routes.utils.category_utils import (
     check_if_category_is_empty,
     check_if_child_catogories_are_empty,
-    input_validation
+    input_validation,
+    check_if_correct_category_id
 )
 
 
@@ -34,21 +35,29 @@ async def create_category(category: Category):
 
 @router.put('/{id}')
 async def update_category(id, category: Category):
-    client.konrad_borowik.categories.find_one_and_update(
-        {
-            "_id": ObjectId(id)
-        },
-        {
-            "$set": dict(category)
-        }
-    )
-    return categoryEntity(client.konrad_borowik.categories.find_one({"_id": ObjectId(id)}))
+    try:
+        check_if_correct_category_id(id)
+        client.konrad_borowik.categories.find_one_and_update(
+            {
+                "_id": ObjectId(id)
+            },
+            {
+                "$set": dict(category)
+            }
+        )
+        return categoryEntity(client.konrad_borowik.categories.find_one({"_id": ObjectId(id)}))
+    except Exception as e:
+        return f'Caught this error: {e}'
 
 
 @router.delete('/{id}')
 async def delete_category(id):
-    if check_if_category_is_empty(id) and check_if_child_catogories_are_empty(id):
-        client.konrad_borowik.categories.find_one_and_delete({"_id": ObjectId(id)})
-        return f'Category deleted.'
-    else:
-        return f'This category is not empty.'
+    try:
+        check_if_correct_category_id(id)
+        if check_if_category_is_empty(id) and check_if_child_catogories_are_empty(id):
+            client.konrad_borowik.categories.find_one_and_delete({"_id": ObjectId(id)})
+            return f'Category deleted.'
+        else:
+            return f'This category is not empty.'
+    except Exception as e:
+        return f'Caught this error: {e}'

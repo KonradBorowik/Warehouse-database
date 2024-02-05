@@ -53,6 +53,11 @@ def check_if_name_already_exists(category: Category):
             raise Exception(f'Category already exists!')
 
 
+def check_if_correct_category_id(id: ObjectId):
+    if not client.konrad_borowik.categories.find_one_and_delete({"_id": ObjectId(id)}):
+        raise Exception(f"Category id not in database")
+
+
 def input_validation(category: Category):
     check_if_name_is_empty(category)
     check_if_data_is_filled(category)

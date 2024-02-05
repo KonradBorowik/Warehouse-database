@@ -25,6 +25,31 @@ docker build -t kb_warehouse_database .
 ```bash
 docker run -d --name mycontainer -p 80:80 kb_warehouse_database
 ```
+4. [Explore Endpoints](#explore-endpoints)
+
+If there are troubles with connecting to the database, then: &#21B4;
+## Deploy locally
+
+1. [Install Mongodb](https://www.mongodb.com/docs/v7.0/administration/install-community/) if not installed
+
+2. Comment lines 15-17 in app/config/setup.py:
+```python
+client = MongoClient(
+    'mongodb+srv://rekrutacja:BZijftwEru0oELxT@cluster11.yxu8n2k.mongodb.net/'
+)
+```
+3. Uncomment lines in app/config/setup.py:
+```python
+# client = MongoClient(
+#     host='localhost',
+#     port=27017,
+# )
+```
+4. Run in terminal
+```bash
+uvicorn app.main:app --reload
+```
+5. [Explore Endpoints](#explore-endpoints)
 
 ## Database
 
@@ -75,5 +100,5 @@ Endpoints for Parts:
 - DELETE http://localhost/parts/{id} - deletes specified record (by _id)
 
 
-### Why FastAPI?
+## Why FastAPI?
 Easy prototyping, fast and realiable. Support for typehinting allows for faster development. Doesn't require much code.

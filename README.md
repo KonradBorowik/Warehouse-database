@@ -1,12 +1,12 @@
 # Warehouse Database
 
-### Brief description
+## Brief description
 MongoDB database to store information about warehouse stock.<br>
-Communication with database through API with [FastAPI](###Why-FastAPI?).<br>
+Communication with database through API with [FastAPI](#why-fastapi?).<br>
 Contenerized with Docker. <br>
 Application has implemented CRUD features.
 
-## Setup
+# Setup
 
 1. Clone repository
 
@@ -51,7 +51,7 @@ uvicorn app.main:app --reload
 ```
 5. [Explore Endpoints](#explore-endpoints)
 
-## Database
+# Database
 
 This db comes with preloaded sample data. Two collections:
 - Categories: 1 base category and 3 subcategories
@@ -83,7 +83,7 @@ This db comes with preloaded sample data. Two collections:
     ```
 To see some examples use the GET method that returns all records from a collection OR explore .json files in app/config/data/.
 
-## Explore endpoints 
+# Explore endpoints
 http://localhost/docs#
 
 Endpoints for catategories:

@@ -2,7 +2,7 @@
 
 ## Brief description
 MongoDB database to store information about warehouse stock.<br>
-Communication with database through API with [FastAPI](#why-fastapi?).<br>
+Communication with database through API with [FastAPI](#why-fastapi).<br>
 Contenerized with Docker. <br>
 Application has implemented CRUD features.
 
